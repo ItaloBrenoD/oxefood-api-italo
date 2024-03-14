@@ -1,8 +1,6 @@
 package br.com.ifpe.oxefood.api.produto;
 
-import java.time.LocalDate;
 
-import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
