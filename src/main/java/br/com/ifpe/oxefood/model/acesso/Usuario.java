@@ -32,20 +32,23 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Usuario extends EntidadeNegocio implements UserDetails {
 
-   public static final String ROLE_CLIENTE = "CLIENTE";
-   @Column(nullable = false, unique = true)
-   private String username;
+    public static final String ROLE_CLIENTE = "CLIENTE";
+    public static final String ROLE_EMPRESA_ADMIN = "EMPRESA_ADMIN"; // READ, DELETE, WRITE, UPDATE.
+    public static final String ROLE_EMPRESA_USER = "EMPRESA_USER"; // READ, WRITE, UPDATE.
 
-   @JsonIgnore
-   @Column(nullable = false)
-   private String password;
+    @Column(nullable = false, unique = true)
+    private String username;
 
-   @JsonIgnore
-   @ElementCollection(fetch = FetchType.EAGER)
-   @Builder.Default
-   private List<String> roles = new ArrayList<>();
+    @JsonIgnore
+    @Column(nullable = false)
+    private String password;
 
-   @Override
+    @JsonIgnore
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<String> roles = new ArrayList<>();
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
@@ -79,4 +82,3 @@ public class Usuario extends EntidadeNegocio implements UserDetails {
         return true;
     }
 }
-
